@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type = "component" version = "2.5.0" method = "upgrade">
+
+    <name>COM_RETOURNAMENT</name>
+    <!-- Данные об авторе компонета  -->
+    <creationDate>2012</creationDate>
+    <author>Andrew Nazarov</author>
+    <authorEmail></authorEmail>
+    <authorUrl></authorUrl>
+    <copyright></copyright>
+    <license></license>
+    <!--  Какая версия нашего компонента -->
+    <version>0.0.6</version>
+    <!-- Описание компонента-->
+    <description>COM_RETOURNAMENT_DESCRIPTION</description>
+
+    <!-- Куда будет скопирован основной файл компонента-->
+    <files folder = "site">
+        <filename>index.html</filename>
+        <filename>retournament.php</filename>
+        <filename>controller.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+    </files>
+
+    <administration>
+        <!-- Административное меню-->
+        <files folder = "admin">
+            <filename>index.html</filename>
+            <filename>retournament.php</filename>
+            <filename>controller.php</filename>
+        </files>
+
+        <languages folder = "admin">
+            <language tag = "ru-RU">language/ru-RU/ru-RU.com_retournament.sys.ini</language>
+        </languages>
+    </administration>
+</extension>
