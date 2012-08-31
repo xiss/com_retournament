@@ -13,7 +13,7 @@ class ReTournamentViewReTournament extends JView
     function display($tpl = null)
     {
         // Назначаем данные для просмотра
-        $this->msg = "Hello!!";
+        $this->msg = "Hello1!!";
 
         // Показываем представление
         parent::display($tpl);
