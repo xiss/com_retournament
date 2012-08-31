@@ -5,7 +5,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.modelitem');
 
 /**
- * Модель retournament1
+ * Модель retournament
  */
 class ReTournamentModelReTournament extends JModelItem
 {
