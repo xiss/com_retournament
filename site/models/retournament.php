@@ -7,6 +7,9 @@ jimport('joomla.application.component.modelitem');
 /**
  * Модель retournament
  */
+
+
+
 class ReTournamentModelReTournament extends JModelItem
 {
     protected $msg;
@@ -28,7 +31,9 @@ class ReTournamentModelReTournament extends JModelItem
             $table->load($id);
 
             // Помещаем в msg значение поля greeting
-            $this->msg = $table->greeting;
+            $this->msg['nick'] = $table->nick;
+			$this->msg['id'] = $table->id;
+			$this->msg['name'] = $table->name;
         }
         return $this->msg;
     }

@@ -10,5 +10,3 @@ jimport('joomla.application.component.controller');
 class ReTournamentController extends JController
 {
 }
-
-
