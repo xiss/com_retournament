@@ -6,21 +6,23 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controller');
 
 /**
- * General Controller of ReTournament component
+ * Общий контролер компонента ReTournament
  */
 class ReTournamentController extends JController
 {
-    /**
-     * display task
-     *
-     * @return void
-     */
-    function display($cachable = false)
-    {
-        // set default view if not set
-        JRequest::setVar('view', JRequest::getCmd('view', 'ReTournaments'));
+	/**
+	 * @param bool $cachable Если True то представление будет закашировано
+	 * @param array $urlparams Массив безопасных url-параметров и их валидных типов переменных
+	 *
+	 * @return void
+	 */
 
-        // call parent behavior
-        parent::display($cachable);
-    }
+	public function display($cachable = false, $urlparams = array())
+	{
+		// Устанавливаем представление по умолчанию если оно не было установлено
+		$input = JFactory::getApplication()->input;
+		$input->set('view', $input->getCmd('view', 'ReTournaments'));
+
+		parent::display($cachable);
+	}
 }

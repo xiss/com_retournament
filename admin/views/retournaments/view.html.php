@@ -10,27 +10,55 @@ jimport('joomla.application.component.view');
  */
 class ReTournamentViewReTournaments extends JView
 {
-    /**
-     * ReTournaments view display method
-     * @return void
-     */
-    function display($tpl = null)
-    {
-        // Get data from the model
-        $items = $this->get('Items');
-        $pagination = $this->get('Pagination');
+	/**
+	 * Сообщения
+	 *
+	 * @var array
+	 */
+	protected $items;
+	/**
+	 * Постраничная навигация
+	 *
+	 * @var object
+	 */
+	protected $pagination;
 
-        // Check for errors.
-        if (count($errors = $this->get('Errors')))
-        {
-            JError::raiseError(500, implode('<br />', $errors));
-            return false;
-        }
-        // Assign data to the view
-        $this->items = $items;
-        $this->pagination = $pagination;
+	/**
+	 * Отображаем список сообщений
+	 *
+	 * @param string $tpl Имя файла шаблона
+	 *
+	 * @return void
+	 *
+	 * @throws Exception
+	 */
+	public function display($tpl = null)
+	{
+		try {
+			// Получаем данные из модели
+			$this->items = $this->get('Items');
 
-        // Display the template
-        parent::display($tpl);
-    }
+			// Получаем объект постраничной навигации
+			$this->pagination = $this->get('Pagination');
+
+			// Отображаем представление
+			parent::display($tpl);
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
+
+	/**
+	 *Устанавливает панель инструментов
+	 *
+	 * @return void
+	 */
+	protected function addTollBar()
+	{
+		JToolBarHelper::title(JText::_('COM_RETOURNAMENT_CONTROL_PANEL'), 'retournament');
+		JToolBarHelper::addNew('retournament.add');
+		JToolBarHelper::editList('retournament.edit');
+		JToolBarHelper::divider();
+		JToolBarHelper::deleteList('', 'retournaments.delete');
+	}
 }

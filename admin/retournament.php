@@ -2,14 +2,21 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-// import joomla controller library
+// Устанавливаем обработку ошибок в режим использования Exception
+JError::$legacy = false;
+
+// Подключаем библиотеку контроллера Joomla
 jimport('joomla.application.component.controller');
 
-// Get an instance of the controller prefixed by ReTournament
+// Получаем экземпляр контроллера с префиксом ReTournament
 $controller = JController::getInstance('ReTournament');
 
-// Perform the Request task
-$controller->execute(JRequest::getCmd('task'));
+// Исполняем задачу task из запроса
+$input = JFactory::getApplication()->input;
+$controller->execute($input->getCmd('task', 'display'));
 
-// Redirect if set by the controller
+// Perform the Request task
+//$controller->execute(JRequest::getCmd('task'));
+
+// Перенаправляем если перенапровление установлено в контроллере
 $controller->redirect();
