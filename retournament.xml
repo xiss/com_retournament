@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5.0" method="upgrade">
+<extension type = "component" version = "2.5.0" method = "upgrade">
 
     <name>COM_RETOURNAMENT</name>
     <!-- Данные об авторе компонета  -->
@@ -15,7 +15,7 @@
     <description>COM_RETOURNAMENT_DESCRIPTION</description>
 
     <!-- Куда будет скопирован основной файл компонента-->
-    <files folder="site">
+    <files folder = "site">
         <filename>index.html</filename>
         <filename>retournament.php</filename>
         <filename>controller.php</filename>
@@ -32,16 +32,16 @@
     <administration>
         <!-- Административное меню-->
         <menu>COM_RETOURNAMENT_MENU</menu>
-        <files folder="admin">
+        <files folder = "admin">
             <filename>index.html</filename>
             <filename>retournament.php</filename>
             <filename>controller.php</filename>
             <folder>models</folder>
             <folder>views</folder>
         </files>
-        <languages folder="admin">
-            <language tag="ru-RU">language/ru-RU/ru-RU.com_retournament.sys.ini</language>
-            <language tag="ru-RU">language/ru-RU/ru-RU.com_retournament.ini</language>
+        <languages folder = "admin">
+            <language tag = "ru-RU">language/ru-RU/ru-RU.com_retournament.sys.ini</language>
+            <language tag = "ru-RU">language/ru-RU/ru-RU.com_retournament.ini</language>
         </languages>
     </administration>
 </extension>

@@ -1,0 +1,85 @@
+/*Таблицы*/
+.reTable {
+    border-collapse: collapse;
+    font-style: normal;
+    font-weight: 400;
+    color: #2d2d2d
+}
+
+/*Шапка*/
+.reTable thead {
+    text-align: left;
+    font: normal 13px/25px "Arial", sans-serif;
+    padding: 3px;
+    line-height: 1.9;
+    background: #DADADA;
+    border: 1px solid #DADADA;
+    color: #2d2d2d
+}
+
+/*Строки, колонки*/
+.reTable td {
+    padding: 3px;
+    border: 1px solid #DADADA
+}
+
+.reTable th {
+    padding: 3px;
+}
+
+/*Футер*/
+.reTable tfoot {
+    margin-bottom: 10px;
+    margin-top: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 0.8em;
+    font-style: italic
+}
+
+/*Нечетные строки*/
+.reTable tr.odd td {
+    background: rgba(255, 255, 255, 0.35)
+}
+
+/*Иконки в таблице*/
+/*Стрелка вверх*/
+.reTable span.up {
+    background: url('data:image/gif;base64,R0lGODlhDQALAIAAADKaAv///yH5BAUUAAEALAAAAAANAAsAAAIVjA+nCr3c3It00Ysu1jxjq00h+AUFADs=') 0px 4px no-repeat;
+    padding-left: 18px;
+    padding-top: 2px;
+}
+
+/*Стрелка вниз*/
+.reTable span.down {
+    background: url('data:image/gif;base64,R0lGODlhDQALAJEAAAAAAP////4BAf///yH5BAEAAAMALAAAAAANAAsAAAIXnIUpxqPZzltxUmcfzpfXGUlQKJLNxRQAOw==') 0 4px no-repeat;
+    padding-left: 18px;
+    padding-top: 2px;
+}
+
+/*Без изменений*/
+.reTable span.unchanged {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAAMQAAADEAc+KWEwAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41Ljg3O4BdAAAAqElEQVQoU2NgQANxcXF6KSkpBSCckJDghS4P54MUFhYWPmtoaPiPjEtKSj5jaAQprqio+I2uGMavq6v7D7IRbjo2k9E1V1ZW/o2PjxdgSExMtMFlMrp4amrqJIa0tLQ5xGrIyso6ANKwjCQNIM8QqyEjI2M92OP4Qgg5pEChCdZAjC2ZmZk7UCIRFAI1NTX/sDkPQzFMZ1JSkjwoEEChAcIghaBgRzYZAE33CHwyjzT6AAAAAElFTkSuQmCC') 0px 4px no-repeat;
+    padding-left: 18px;
+    padding-top: 2px;
+}
+
+/*Список в две колонки*/
+ul.reListTwoCol {
+    list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxNjdCMjIyMEE2NTlERTExQTI3RUUwMUE0M0Y4QzA1MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MDA4RjE4N0FFQzMxMURGQkY3QUMwQTRCQUMwNjhFRiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MDA4RjE4NkFFQzMxMURGQkY3QUMwQTRCQUMwNjhFRiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAxODAxMTc0MDcyMDY4MTE5OTRDQUNCQ0Q3MDFGOUM2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjE2N0IyMjIwQTY1OURFMTFBMjdFRTAxQTQzRjhDMDUzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+6QHsgAAAAPRJREFUeNpifPjwodjdxYtFvz5+3PPt+XN9TnFxlj/fvp1QioycKair+4o5VF3d9sWBA1v/fP2qyyYgwMvEysr9+9Mn9fcXL3qxCQqeZfYXF58CFNT59/s3AxMzMwMIMLOzM/z6+JHj440bbCyMTEzWLNzcDAyMjAxAhQw/371jgIH/f//as/z//5+BEaSLg4Ph/79/YIWsPDxA2f8MTGxsjEysfHxnQaqBJoEx0B0MLFxcDCBT2YWEzjKJWVjMBUp8giliZmMDG8/IzPxJxMxsDnN1by8/u7Dw7q9PnogD7eQDKvoO1H1S1senSkhf/xlAgAEADS1MA4ySco8AAAAASUVORK5CYII=') !important;
+    width: 100%;
+    margin-top: 25px;
+}
+
+ul.reListTwoCol li {
+    width: 400px;
+    margin: 7px 0 !important;
+    line-height: 0.55em !important;
+    list-style-position: inside;
+    padding-left: 30px;
+    float: left;
+}
+
+
+
+
