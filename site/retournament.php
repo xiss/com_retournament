@@ -3,9 +3,9 @@ defined('_JEXEC') or die('Restricted access');
 
 // Подключаем логирование.
 JLog::addLogger(
-    array('text_file' => 'com_retournament.php'),
-    JLog::ALL,
-    array('com_retournament')
+	array('text_file' => 'com_retournament.php'),
+	JLog::ALL,
+	array('com_retournament')
 );
 JError::$legacy = false;
 
@@ -13,7 +13,7 @@ JError::$legacy = false;
 jimport('joomla.application.component.controller');
 
 //Импорт CSS
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 $document->addStyleSheet(JURI::base() . "components/com_retournament/assets/css/retournament.css");
 //JHTML::stylesheet('retournament.css', JPATH_COMPONENT_SITE . "/assets/css/retournament.css");
 

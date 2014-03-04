@@ -3,22 +3,23 @@ defined('_JEXEC') or die('Restricted access');
 
 // Загружаем библиотеку joomla.application.component.modelitem
 jimport('joomla.application.component.modellist');
+
 /**
  * Модель ReTournamentLadder
  */
 class ReTournamentModelLadder extends JModelList
 {
-    /**
-     * Получаем данные для таблицы рейтинга
-     *
-     * @return object
-     */
-    public function getLadderList()
-    {
-        $db = $this::getDbo();
-        $db->getQuery(true);
-        $query = "
-					SELECT  `nick`,
+	/**
+	 * Получаем данные для таблицы рейтинга
+	 *
+	 * @return object
+	 */
+	public function getLadderList()
+	{
+		$db = $this::getDbo();
+		$db->getQuery(true);
+		$query = "
+					SELECT  IF(ISNULL(nick), CONCAT_WS(' ', surname, #__rt_participants.name), nick) AS name,
 							`rating`,
 							`rating_change`,
 							`wins`,
@@ -44,28 +45,31 @@ class ReTournamentModelLadder extends JModelList
 							ORDER BY `date` DESC
 							LIMIT 5) AS datelist)
 					ORDER BY `rating` DESC";
-        $db->setQuery($query);
-        $results = $db->loadObjectList();
-        return $results;
-    }
-    /**
-     * Получаем дату для заголовка таблицы с рейтингом
-     *
-     * @return object
-     */
-    public function getLadderHeading()
-    {
-        $db = $this::getDbo();
-        $db->getQuery(true);
-        $query = "
+		$db->setQuery($query);
+		$results = $db->loadObjectList();
+
+		return $results;
+	}
+
+	/**
+	 * Получаем дату для заголовка таблицы с рейтингом
+	 *
+	 * @return object
+	 */
+	public function getLadderHeading()
+	{
+		$db = $this::getDbo();
+		$db->getQuery(true);
+		$query = "
 			SELECT `date` AS last_tournament_date
 			FROM `jos_rt_tournaments`
 			WHERE `type` = 'rt'
 			AND `state` = 'complete'
 			ORDER BY `date` DESC
 			LIMIT 1";
-        $db->setQuery($query);
-        $results = $db->loadObject();
-        return $results;
-    }
+		$db->setQuery($query);
+		$results = $db->loadObject();
+
+		return $results;
+	}
 }
