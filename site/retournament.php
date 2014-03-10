@@ -18,7 +18,7 @@ $document->addStyleSheet(JURI::base() . 'components/com_retournament/assets/css/
 //JHTML::stylesheet('retournament.css', JPATH_COMPONENT_SITE . "/assets/css/retournament.css");
 
 // Подключаем хелперы
-JLoader::register('viewHelper', JPATH_COMPONENT . '\helpers\view_helper.php');
+JLoader::register('viewHelper', JPATH_COMPONENT . DS . 'helpers' . DS . 'view_helper.php');
 
 // Получаем экземпляр контроллера расширения ReTournament
 $controller = JController::getInstance('ReTournament');
