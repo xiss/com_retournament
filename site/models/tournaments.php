@@ -1,0 +1,67 @@
+<?php
+defined('_JEXEC') or die('Restricted access');
+
+// Загружаем библиотеку joomla.application.component.modelitem
+jimport('joomla.application.component.modellist');
+
+/**
+ * Модель ReTournamentTournament
+ */
+class ReTournamentModelTournaments extends JModelList
+{
+	/**
+	 * Получаем данные для таблицы рейтинга
+	 *
+	 * @return object
+	 */
+	public function getTournaments()
+	{
+		// Получаем id турнира для которого ищем статистику
+		$id = JFactory::getApplication()->input->get('id');
+
+		$db = $this::getDbo();
+		$db->getQuery(true);
+		$query = "
+					SELECT 
+(SELECT COUNT(id) FROM jos_rt_participants) AS qt_participants,
+COUNT(id) AS qt_fights,
+(SELECT COUNT(id) FROM jos_rt_fights WHERE (inf_hits_1 <> 3 AND inf_hits_2 <>3) AND ISNULL(fight_type)) AS qt_draws,
+(SELECT SUM(warnings_1 + warnings_2) FROM jos_rt_fights) AS qt_warnings,
+(SELECT (COUNT(id)-1) FROM jos_rt_teams) AS qt_teams,
+IF(MAX(`rating_1`)>MAX(`rating_2`), MAX(`rating_1`),MAX(`rating_2`)) AS max_rating,
+IF(MIN(`rating_1`)<MIN(`rating_2`), MIN(`rating_1`),MIN(`rating_2`)) AS min_rating
+FROM `jos_rt_fights`
+WHERE ISNULL(fight_type)";
+		$db->setQuery($query);
+		$results = $db->loadObject();
+
+		return $results;
+	}
+
+	/**
+	 * Возвращает список боев турнира с параметрами
+	 *
+	 * @return array
+	 */
+	public function getFights()
+	{
+		$db = $this::getDbo();
+		$db->getQuery(true);
+		$query = "
+                    SELECT
+                        (SELECT COUNT(id) FROM jos_rt_participants) AS qt_participants,
+                        COUNT(id) AS qt_fights,
+                        (SELECT COUNT(id) FROM jos_rt_fights WHERE (inf_hits_1 <> 3 AND inf_hits_2 <>3) AND ISNULL(fight_type)) AS qt_draws,
+                        (SELECT SUM(warnings_1 + warnings_2) FROM jos_rt_fights) AS qt_warnings,
+                        (SELECT (COUNT(id)-1) FROM jos_rt_teams) AS qt_teams,
+                        IF(MAX(`rating_1`)>MAX(`rating_2`), MAX(`rating_1`),MAX(`rating_2`)) AS max_rating,
+                        IF(MIN(`rating_1`)<MIN(`rating_2`), MIN(`rating_1`),MIN(`rating_2`)) AS min_rating
+                    FROM `jos_rt_fights`
+                    WHERE ISNULL(fight_type)
+        ";
+		$db->setQuery($query);
+		$results = $db->loadObjectList();
+
+		return $results;
+	}
+}

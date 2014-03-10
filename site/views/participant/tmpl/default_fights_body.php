@@ -8,12 +8,14 @@ defined('_JEXEC') or die('Restricted access');
 		$curentTournament = $row->tournament_id; ?>
 		<tr>
 			<th colspan="7">
-				<?php echo $this->escape($row->tournament_name . " " . $this->prepareDate($row->tournament_date)); ?>
+				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . $this->escape((int)$row->tournament_id)); ?>">
+					<?php echo $this->escape($row->tournament_name . " " . $this->prepareDate($row->tournament_date)); ?>
+				</A>
 			</th>
 		</tr>
 	<?php endif; ?>
 	<!--Бои в турнирах-->
-	<tr class='<?php echo $this->prepareCssForFight($row->fight_type) ?>'>
+	<tr class='odd<?php echo $this->prepareCssForFight($row->fight_type) ?>'>
 		<td>
 			<?php echo $this->prepareStage($this->escape($row->tournament_stage)); ?>
 		</td>

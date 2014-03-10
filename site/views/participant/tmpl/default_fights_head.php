@@ -2,25 +2,11 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <tr class="reTableColor">
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_ROUND'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_INF_HITS'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_MISS_HITS'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_OPPONENT'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_RATING'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_WARNINGS'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_NOTE'); ?></strong>
-	</th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_ROUND'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_INF_HITS'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_MISS_HITS'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_OPPONENT'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_RATING'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_WARNINGS'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_HEADING_NOTES'); ?></th>
 </tr>

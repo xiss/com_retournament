@@ -33,6 +33,7 @@ class ReTournamentModelParticipant extends JModelList
 							`loses`,
 							`miss_hits`,
 							`inf_hits`,
+							`team_id`,
 			                (SELECT MAX( `rating_1` ) AS `max`
                             FROM `#__rt_fights`
                             WHERE `fighter_id_1` =$id
@@ -114,6 +115,7 @@ class ReTournamentModelParticipant extends JModelList
 	 *
 	 * @var array
 	 */
+	// TODO Видимо стоит вынести в хелперы
 	protected $stagesRT = array("1", "2", "3", "4", "top8", "top4", "place3", "top2");
 
 	/**

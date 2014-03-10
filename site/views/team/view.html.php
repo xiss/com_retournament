@@ -7,48 +7,37 @@ jimport('joomla.application.component.view');
 /**
  * HTML представление класса для компонента retourney
  */
-class ReTournamentViewLadder extends JView
+class ReTournamentViewTeam extends JView
 {
 	/**
-	 * Сообщение.
-	 *
-	 * @var  string
-	 */
-	protected $ladderList;
-	/**
-	 * Дата для заголовка таблицы с рейтингом
+	 * Данные о команде
 	 *
 	 * @var
 	 */
-	protected $ladderHeading;
+	protected $team;
 	/**
-	 * Параметры статистики
+	 * Сокомандники
 	 *
 	 * @var
 	 */
-	protected $params;
+	protected $teammates;
 
 	/**
 	 * Переопределяем метод display класса JView
 	 *
-	 * @param   string $tpl Имя файла шаблона.
+	 * @param string $tpl Имя файла шаблона.
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public function display($tpl = null)
 	{
 		try {
 			// Получаем данные из модели
-			$this->ladderList = $this->get('LadderList');
-			$this->ladderHeading = $this->get('LadderHeading');
-
-			//Получаем параметры приложения
-			$app = JFactory::getApplication();
-			$this->params = $app->getParams();
+			$this->team = $this->get('Team');
+			$this->teammates = $this->get('Teammates');
 
 			// Подготавливаем документ
 			$this->prepareDocument();
-
 			// Отображаем представление.
 			parent::display($tpl);
 		}
@@ -59,25 +48,23 @@ class ReTournamentViewLadder extends JView
 	}
 
 	/**
-	 * Подготавливает документ
-	 *
+	 * Подготавливает документ, устанавливае заголовок
 	 */
 	protected function prepareDocument()
 	{
-		$title = null;
+		$this->document->setTitle($this->escape($this->getTitle()));
+	}
 
-		// Добавляем поддержку метаданных из пункта меню
-		if ($this->params->get('menu-meta_description')) {
-			$this->document->setDescription($this->params->get('menu-meta_description'));
-		}
+	/**
+	 * Возвращает заголовк для страницы
+	 *
+	 * @return string
+	 */
+	public function getTitle()
+	{
+		$team = $this->get('Team');
 
-		if ($this->params->get('menu-meta_keywords')) {
-			$this->document->setDescription($this->params->get('menu-meta_keywords'));
-		}
-
-		if ($this->params->get('robots')) {
-			$this->document->setDescription($this->params->get('robots'));
-		}
+		return $team->name;
 	}
 
 	/**
@@ -114,8 +101,6 @@ class ReTournamentViewLadder extends JView
 
 			return $change;
 		}
-
-		return $change;
 	}
 
 	/**

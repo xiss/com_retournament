@@ -3,28 +3,12 @@
 defined('_JEXEC') or die('Restricted Access');
 ?>
 <tr class="reTableColor">
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_#'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_NICK'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_TEAM_NAME'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_RATING'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_RATING_CHANGE'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_WINS_DRAWS_LOSES'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_INFHITS_MISSHITS'); ?></strong>
-	</th>
-	<th>
-		<strong><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_LAST_TOURNAMENT'); ?></strong>
-	</th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_#'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_NICK'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_TEAM_NAME'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_RATING'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_RATING_CHANGE'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_WINS_DRAWS_LOSES'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_INFHITS_MISSHITS'); ?></th>
+	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_LAST_TOURNAMENT'); ?></th>
 </tr>

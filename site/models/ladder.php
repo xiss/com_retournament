@@ -27,6 +27,7 @@ class ReTournamentModelLadder extends JModelList
 							`loses`,
 							`miss_hits`,
 							`inf_hits`,
+							`team_id`,
 							#__rt_participants.id AS id,
 							#__rt_tournaments.name AS tournament_name,
 							#__rt_tournaments.date AS tournament_date,
@@ -36,14 +37,6 @@ class ReTournamentModelLadder extends JModelList
 					JOIN `#__rt_tournaments` ON #__rt_tournaments.id = #__rt_participants.tournament_id
 					JOIN `#__rt_teams` ON #__rt_teams.id = #__rt_participants.team_id
 					WHERE #__rt_participants.state = 'active'
-					AND #__rt_tournaments.date > (
-						SELECT MIN(datelist.date) from(
-							SELECT `date`
-							FROM `#__rt_tournaments`
-							WHERE `date` IS NOT NULL
-							AND `state` = 'complete'
-							ORDER BY `date` DESC
-							LIMIT 5) AS datelist)
 					ORDER BY `rating` DESC";
 		$db->setQuery($query);
 		$results = $db->loadObjectList();

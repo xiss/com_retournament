@@ -6,7 +6,8 @@ defined('_JEXEC') or die('Restricted access');
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_TEAM') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->team_name); ?>
+		<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$this->participant->team_id); ?>">
+			<?php echo $this->escape($this->participant->team_name); ?></A>
 	</li>
 	<li>
 		<strong>

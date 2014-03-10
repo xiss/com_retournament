@@ -62,6 +62,7 @@ class ReTournamentViewParticipant extends JView
 	 */
 	protected function prepareInfHits($hits)
 	{
+		// TODO Убрать в хелперы
 		$result = "";
 		while ($hits > 0) {
 			$result .= "<span class='oneInfHit'></span>";
@@ -98,6 +99,7 @@ class ReTournamentViewParticipant extends JView
 	 */
 	protected function prepareWarnings($warnings)
 	{
+		// TODO Убрать в хелперы
 		$result = "";
 		while ($warnings > 0) {
 			$result .= "<span class='oneWarning'></span>";
@@ -146,6 +148,7 @@ class ReTournamentViewParticipant extends JView
 	 */
 	protected function prepareStage($stage)
 	{
+		// TODO Убрать в хелперы
 		switch ($stage) {
 			case 1:
 				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_1');
@@ -186,6 +189,7 @@ class ReTournamentViewParticipant extends JView
 	 */
 	protected function prepareNote($fightType, $infHits)
 	{
+		// TODO Убрать в хелперы
 		if ($fightType == "buy") {
 			return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_NOTE_BUY');
 		}
@@ -206,11 +210,12 @@ class ReTournamentViewParticipant extends JView
 	 */
 	protected function prepareCssForFight($fightType)
 	{
+		// TODO Убрать в хелперы
 		if (is_null($fightType)) {
-			return "odd";
+			return "";
 		}
 		else {
-			return "semi";
+			return " semi";
 		}
 	}
 
