@@ -9,21 +9,21 @@ defined('_JEXEC') or die('Restricted access');
 		<tr>
 			<th colspan="7">
 				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . $this->escape((int)$row->tournament_id)); ?>">
-					<?php echo $this->escape($row->tournament_name . " " . $this->prepareDate($row->tournament_date)); ?>
+					<?php echo $this->escape($row->tournament_name . " " . viewHelper::prepareDate($row->tournament_date)); ?>
 				</A>
 			</th>
 		</tr>
 	<?php endif; ?>
 	<!--Бои в турнирах-->
-	<tr class='odd<?php echo $this->prepareCssForFight($row->fight_type) ?>'>
+	<tr class='odd<?php echo viewHelper::prepareCssForFight($row->fight_type) ?>'>
 		<td>
-			<?php echo $this->prepareStage($this->escape($row->tournament_stage)); ?>
+			<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
 		</td>
 		<td>
-			<?php echo $this->prepareInfHits($this->escape($row->inf_hits)); ?>
+			<?php echo viewHelper::prepareInfHits($this->escape($row->inf_hits)); ?>
 		</td>
 		<td>
-			<?php echo $this->prepareMissHits($this->escape($row->miss_hits)); ?>
+			<?php echo viewHelper::prepareMissHits($this->escape($row->miss_hits)); ?>
 		</td>
 		<td>
 			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $this->escape((int)$row->opponent_id)); ?>">
@@ -34,10 +34,10 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo $this->escape($row->rating); ?>
 		</td>
 		<td>
-			<?php echo $this->prepareWarnings($this->escape($row->warnings)); ?>
+			<?php echo viewHelper::prepareWarnings($this->escape($row->warnings)); ?>
 		</td>
 		<td>
-			<?php echo $this->prepareNote($this->escape($row->fight_type), $this->escape($row->inf_hits)); ?>
+			<?php echo viewHelper::prepareNote($this->escape($row->fight_type), $this->escape($row->inf_hits)); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

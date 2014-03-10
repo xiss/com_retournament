@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo $this->escape($row->rating); ?>
 		</td>
 		<td>
-			<?php echo $this->prepareRatingChange($row->rating_change); ?>
+			<?php echo viewHelper::prepareRatingChange($row->rating_change); ?>
 		</td>
 		<td>
 			<?php echo $this->escape($row->wins . "/" . $row->draws . "/" . $row->loses); ?>
@@ -27,7 +27,7 @@ defined('_JEXEC') or die('Restricted access');
 		</td>
 		<td>
 			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . (int)$row->tournament_id); ?>">
-				<?php echo $this->prepareDate($this->escape($row->tournament_date)); ?></A>
+				<?php echo viewHelper::prepareDate($this->escape($row->tournament_date)); ?></A>
 		</td>
 		<td>
 			<?php echo $this->escape($row->state); ?>

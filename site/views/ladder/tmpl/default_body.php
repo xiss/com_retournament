@@ -16,12 +16,12 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo $this->escape($row->team_name); ?></A>
 		</td>
 		<td><?php echo $this->escape($row->rating); ?></td>
-		<td><?php echo $this->prepareRatingChange($row->rating_change); ?></td>
+		<td><?php echo viewHelper::prepareRatingChange($row->rating_change); ?></td>
 		<td><?php echo $this->escape($row->wins . "/" . $row->draws . "/" . $row->loses); ?></td>
 		<td><?php echo $this->escape($row->inf_hits . "/" . $row->miss_hits); ?></td>
 		<td>
 			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . (int)$row->tournament_id); ?>">
-				<?php echo $this->escape($this->prepareDate($row->tournament_date)); ?></A>
+				<?php echo $this->escape(viewHelper::prepareDate($row->tournament_date)); ?></A>
 		</td>
 	</tr>
 <?php endforeach; ?>

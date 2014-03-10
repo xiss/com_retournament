@@ -9,15 +9,18 @@ JLog::addLogger(
 );
 JError::$legacy = false;
 
-//Импорт библиотеки контроллеров joomla
+// Импорт библиотеки контроллеров joomla
 jimport('joomla.application.component.controller');
 
-//Импорт CSS
+// Импорт CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet(JURI::base() . "components/com_retournament/assets/css/retournament.css");
+$document->addStyleSheet(JURI::base() . 'components/com_retournament/assets/css/retournament.css');
 //JHTML::stylesheet('retournament.css', JPATH_COMPONENT_SITE . "/assets/css/retournament.css");
 
-//Получаем экземпляр контроллера расширения ReTournament
+// Подключаем хелперы
+JLoader::register('viewHelper', JPATH_COMPONENT . '\helpers\view_helper.php');
+
+// Получаем экземпляр контроллера расширения ReTournament
 $controller = JController::getInstance('ReTournament');
 
 // Выполняем запрос задачи
