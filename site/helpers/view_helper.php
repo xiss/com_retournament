@@ -31,7 +31,7 @@ class viewHelper
 		}
 		// Если это новый участник
 		if (is_null($change)) {
-			$change = JText::_('COM_RETOURNAMENT_LADDER_NEW_PARTICIPANT');
+			$change = JText::_('COM_RETOURNAMENT_HELPER_VIEW_NEW_PARTICIPANT');
 
 			return $change;
 		}
@@ -57,21 +57,21 @@ class viewHelper
 		$date = new JDate($date);
 		$cur_months = $date->format('n');
 		$monthsInParDeaths = array(
-			1 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_JANUARY'),
-			2 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_FEBRUARY'),
-			3 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_MARCH'),
-			4 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_APRIL'),
-			5 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_MAY'),
-			6 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_JUNE'),
-			7 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_JULY'),
-			8 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_AUGUST'),
-			9 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_SEPTEMBER'),
-			10 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_OCTOBER'),
-			11 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_NOVEMBER'),
-			12 => JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_DECEMBER')
+			1 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_JANUARY'),
+			2 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_FEBRUARY'),
+			3 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_MARCH'),
+			4 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_APRIL'),
+			5 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_MAY'),
+			6 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_JUNE'),
+			7 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_JULY'),
+			8 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_AUGUST'),
+			9 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_SEPTEMBER'),
+			10 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_OCTOBER'),
+			11 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_NOVEMBER'),
+			12 => JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_DECEMBER')
 		);
 
-		return $date->format('j') . ' ' . $monthsInParDeaths[$cur_months] . ' ' . $date->format('Y') . JText::_('COM_RETOURNAMENT_PARENTAL_DEATHS_ENDING_DATE');
+		return $date->format('j') . ' ' . $monthsInParDeaths[$cur_months] . ' ' . $date->format('Y') . JText::_('COM_RETOURNAMENT_HELPER_VIEW_PARENTAL_DEATHS_ENDING_DATE');
 	}
 
 	/**
@@ -141,28 +141,28 @@ class viewHelper
 	{
 		switch ($stage) {
 			case 1:
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_1');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1');
 				break;
 			case 2:
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_2');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_2');
 				break;
 			case 3:
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_3');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_3');
 				break;
 			case 4:
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_4');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_4');
 				break;
 			case "top8":
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_TOP_8');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_8');
 				break;
 			case "top4":
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_TOP_4');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_4');
 				break;
 			case "top2":
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_TOP_2');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_2');
 				break;
 			case "place3":
-				return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_ROUND_PLACE_3');
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_PLACE_3');
 				break;
 			default:
 				return $stage;
@@ -180,13 +180,13 @@ class viewHelper
 	static public function prepareNote($fightType, $infHits)
 	{
 		if ($fightType == "buy") {
-			return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_NOTE_BUY');
+			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_NOTE_BUY');
 		}
 		if (($fightType . $infHits) == "forfeit3") {
-			return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_FORFEIT_WIN');
+			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_FORFEIT_WIN');
 		}
 		elseif ($fightType == "forfeit") {
-			return JText::_('COM_RETOURNAMENT_PARTICIPANT_FIGHTS_FORFEIT_LOSE');
+			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_FORFEIT_LOSE');
 		}
 	}
 
