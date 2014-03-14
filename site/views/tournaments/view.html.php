@@ -10,10 +10,11 @@ jimport('joomla.application.component.view');
 class ReTournamentViewTournaments extends JView
 {
 	/**
-	 * Информация по турниры
+	 * Информация по турнирам
 	 *
 	 * @var
 	 */
+	protected $tournamentsStat;
 	protected $tournaments;
 
 	/**
@@ -27,6 +28,7 @@ class ReTournamentViewTournaments extends JView
 	{
 		try {
 			// Получаем данные из модели
+			$this->tournamentsStat = $this->get('TournamentsStat');
 			$this->tournaments = $this->get('Tournaments');
 
 			// Отображаем представление.

@@ -9,10 +9,10 @@ defined('_JEXEC') or die('Restricted access');
 		TOURNAMENTS
 	</h2>
 	<?php echo $this->loadTemplate('statistics'); ?>
-	<!--    <table width = "100%" class = "reTable">-->
-	<!--        <thead>--><?php //echo $this->loadTemplate('fights_head'); ?><!--</thead>-->
-	<!--        <tbody>--><?php //echo $this->loadTemplate('fights_body'); ?><!--</tbody>-->
-	<!--    </table>-->
+	<table width="100%" class="reTable">
+		<thead><?php echo $this->loadTemplate('tournaments_head'); ?></thead>
+		<tbody><?php echo $this->loadTemplate('tournaments_body'); ?></tbody>
+	</table>
 </div>
 
 
