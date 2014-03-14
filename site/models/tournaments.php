@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-// Загружаем библиотеку joomla.application.component.modelitem
+// Загружаем библиотеку joomla.application.component.modellist
 jimport('joomla.application.component.modellist');
 
 /**
