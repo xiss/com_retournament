@@ -119,41 +119,80 @@ class viewHelper
 
 
 	/**
-	 * Принимает этап турнира из таблицы #__rt_fights.tournament_part и возвращает название этапа
+	 * Принимает параметры этапа турнира #__rt_fights.tournament_part и #__rt_fights.tournament_stage и возвращает название этапа
 	 *
 	 * @param $stage string Этап турнира
+	 * @param $part  string Часть турнира
 	 *
 	 * @return string Название этапа
 	 */
-	static public function prepareStage($stage)
+	static public function prepareStage($stage, $part = '')
 	{
-		switch ($stage) {
-			case 1:
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1');
-				break;
-			case 2:
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_2');
-				break;
-			case 3:
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_3');
-				break;
-			case 4:
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_4');
-				break;
-			case "top8":
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_8');
-				break;
-			case "top4":
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_4');
-				break;
-			case "top2":
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_2');
-				break;
-			case "place3":
-				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_PLACE_3');
-				break;
-			default:
-				return $stage;
+		if ($part == 'winers' or $part == 'final' or $part == 'losers') {
+			$stage = explode('#', $stage);
+			$result = '';
+			switch ($stage[0]) {
+				case '1/16':
+					$result .= JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/16');
+					break;
+				case '1/8':
+					$result .= JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/8');
+					break;
+				case '1/4':
+					$result .= JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/4');
+					break;
+				case '1/2':
+					$result .= JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/2');
+					break;
+				case 'final':
+					$result = $stage[1];
+					break;
+				default:
+					$result .= $stage[0] . '#' . $stage[1];
+			}
+			switch ($part) {
+				case 'winers':
+					$result .= ' ' . JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_WINERS');
+					break;
+				case 'final':
+					$result .= ' ' . JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_FINALS');
+					break;
+				case 'losers':
+					$result .= ' ' . JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_LOSERS');
+					break;
+				default:
+					$result .= $part;
+			}
+
+			return $result;
+		}
+		else {
+			switch ($stage) {
+				case '1':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1');
+					break;
+				case '2':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_2');
+					break;
+				case '3':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_3');
+					break;
+				case '4':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_4');
+					break;
+				case "top8":
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_8');
+					break;
+				case "top4":
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_4');
+					break;
+				case "top2":
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_TOP_2');
+					break;
+				case "place3":
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_PLACE_3');
+					break;
+			}
 		}
 	}
 

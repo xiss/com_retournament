@@ -93,14 +93,15 @@ class ReTournamentModelParticipant extends JModelList
                     #__rt_tournaments.name AS tournament_name,
                     #__rt_tournaments.id AS tournament_id,
                     `tournament_stage`,
-                    `type` AS tournament_type,
+                    `tournament_part`,
+                    #__rt_tournaments.type AS tournament_type,
                     UNIX_TIMESTAMP(#__rt_tournaments.date) AS tournament_date_ts,
                     #__rt_tournaments.date AS tournament_date
                     FROM `#__rt_fights`
                     JOIN `#__rt_tournaments` ON #__rt_tournaments.id = #__rt_fights.tournament_id
                     LEFT JOIN `#__rt_participants` AS properties_fighter_1 ON #__rt_fights.fighter_id_1 = properties_fighter_1.id
                     LEFT JOIN `#__rt_participants` AS properties_fighter_2 ON #__rt_fights.fighter_id_2 = properties_fighter_2.id
-                    WHERE (`fighter_id_1` = $id OR `fighter_id_2` = $id) AND #__rt_tournaments.type = 'rt'
+                    WHERE (`fighter_id_1` = $id OR `fighter_id_2` = $id)
                     ORDER BY tournament_date DESC
 					";
 		$db->setQuery($query);
@@ -113,12 +114,29 @@ class ReTournamentModelParticipant extends JModelList
 	}
 
 	/**
-	 * Очередность боев в рейтинговом турнире
+	 * Очередность туров в рейтинговом турнире
 	 *
 	 * @var array
 	 */
 	// TODO Видимо стоит вынести в хелперы
 	protected $stagesRT = array("1", "2", "3", "4", "top8", "top4", "place3", "top2");
+
+	/**
+	 * Очередность туров в турнире чемпионов
+	 *
+	 * @var array
+	 */
+	protected $stagesCHT = array("1/16#1", "1/16#2", "1/16#3", "1/16#4", "1/16#5", "1/16#6", "1/16#7", "1/16#8",
+		"1/8#1", "1/8#2", "1/8#3", "1/8#4", "1/8#5", "1/8#6", "1/8#7", "1/8#8",
+		"1/4#1", "1/4#2", "1/4#3", "1/4#4",
+		"1/2#1", "1/2#2", 'final#1', 'final#2',);
+
+	/**
+	 * Очередность этапов в турнире чемпионов
+	 *
+	 * @var array
+	 */
+	protected $partsCHT = array("winers", "losers", "final");
 
 	/**
 	 * callback функция сортировки массива с боями.
@@ -133,12 +151,28 @@ class ReTournamentModelParticipant extends JModelList
 	{
 		// Сравниваем дату турнира
 		if ($a->tournament_date_ts == $b->tournament_date_ts) {
-			// Сравниваем тур турнира
-			if (array_search($a->tournament_stage, $this->stagesRT) == array_search($b->tournament_stage, $this->stagesRT)) {
-				return 0;
-			};
+			// Определяем тип турнира
+			if ($a->tournament_type == 'rt') {
+				// Сравниваем тур турнира
+				if (array_search($a->tournament_stage, $this->stagesRT) == array_search($b->tournament_stage, $this->stagesRT)) {
+					return 0;
+				};
 
-			return (array_search($a->tournament_stage, $this->stagesRT) > array_search($b->tournament_stage, $this->stagesRT)) ? -1 : 1;
+				return (array_search($a->tournament_stage, $this->stagesRT) > array_search($b->tournament_stage, $this->stagesRT)) ? -1 : 1;
+			}
+			else {
+				// Если это один этап (верхняя нижняя)
+				if ($a->tournament_part == $b->tournament_part) {
+					// Сравниваем тур турнира
+					if (array_search($a->tournament_stage, $this->stagesCHT) == array_search($b->tournament_stage, $this->stagesCHT)) {
+						return 0;
+					};
+
+					return (array_search($a->tournament_stage, $this->stagesCHT) > array_search($b->tournament_stage, $this->stagesCHT)) ? -1 : 1;
+				}
+
+				return (array_search($a->tournament_part, $this->partsCHT) > array_search($b->tournament_part, $this->partsCHT)) ? -1 : 1;
+			}
 		}
 
 		return ($a->tournament_date_ts > $b->tournament_date_ts) ? -1 : 1;

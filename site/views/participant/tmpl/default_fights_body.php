@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 	<!--Бои в турнирах-->
 	<tr class='odd<?php echo viewHelper::prepareCssForFight($row->fight_type) ?>'>
 		<td>
-			<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
+			<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage), $this->escape($row->tournament_part)); ?>
 		</td>
 		<td>
 			<?php echo viewHelper::prepareHits($this->escape($row->inf_hits)); ?>
