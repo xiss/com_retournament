@@ -84,15 +84,15 @@
 	padding-top: 2px;
 }
 
-/*Один нанесенный хит*/
-.reTable span.oneInfHit {
+/*Один хит победителя*/
+.reTable span.oneHitWin {
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAAwwAAAMMBnc7+MwAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuODc7gF0AAACmSURBVChTY2BAA3alSqqatczO6vUMDlr1bFro8nC+Vj2DhGodw3q1eob/KLiO4TiQr4GiEar4PoZimOY6hu8gG+GasJqMZhNQzXP5egYOBqBOBZwmo2uqZ4hgUK1nSCBBQwODSj1DBkkaQJ4hVgNQXQHY40AP4Q4hpJAChSZYA5G2VKDEBdDzEWp1DO9xOA9VMUwnMJwFQIEA1NwAwkDNFaBgRzYZABwVqVjwl1d4AAAAAElFTkSuQmCC') 0 4px no-repeat;
 	padding-left: 14px;
 	padding-top: 2px;
 }
 
-/*Один пропущенный хит*/
-.reTable span.oneMissHit {
+/*Один хит проигравшего*/
+.reTable span.oneHitLose {
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAAwwAAAMMBnc7+MwAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuODc7gF0AAACqSURBVChTY2BAA8fTlVS/ZzE7/89mcPiRy6aFLg/n/89ikPiXxbAeSP9HxkCx4/9zGDRQNEIV30dXDOMDNX0H2QjXhM1kDJsyGZ7/j2fgYPifzqCAy2QMTRkMEQxAwQRiNfzPZGhg+JfJkEGSBpBniNXwL4OhAOxxoKdxhhBKSAGDHqyBSFsqUOICaF0E0D/vcTgPVTFM5/98BgFwIABDA4yzGCpAwY5sMgARcQHQnmoeeAAAAABJRU5ErkJggg==') 0 4px no-repeat;
 	padding-left: 14px;
 	padding-top: 2px;

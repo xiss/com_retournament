@@ -3,7 +3,7 @@
 defined('_JEXEC') or die('Restricted Access');
 ?>
 <tr class="reTableColor">
-	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_#'); ?></th>
+	<th width="30px"><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_#'); ?></th>
 	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_NICK'); ?></th>
 	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_TEAM_NAME'); ?></th>
 	<th><?php echo JText::_('COM_RETOURNAMENT_LADDER_HEADING_RATING'); ?></th>

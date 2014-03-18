@@ -50,7 +50,7 @@ class ReTournamentModelTournaments extends JModelList
 		$db = $this::getDbo();
 		$db->getQuery(true);
 		$query = "
-                SELECT `id`,
+                  SELECT `id`,
                     `name`,
                     `date`,
                     `type`,
@@ -58,10 +58,10 @@ class ReTournamentModelTournaments extends JModelList
                     -- Количество Участников
                     (SELECT  COUNT(fighter_id_1)
                         FROM(
-                            (SELECT DISTINCT fighter_id_1 FROM `jos_rt_fights` WHERE `tournament_id` = 6)
+                            (SELECT DISTINCT fighter_id_1, tournament_id FROM `jos_rt_fights`)
                         UNION
-                            (SELECT DISTINCT fighter_id_2 FROM `jos_rt_fights` WHERE `tournament_id` = 6)
-                            ) AS tbl) AS qt_participants
+                            (SELECT DISTINCT fighter_id_2, tournament_id FROM `jos_rt_fights`)
+                            ) AS tbl WHERE tournament_id = jos_rt_tournaments.id) AS qt_participants
                 FROM `jos_rt_tournaments` WHERE state = 'complete'
                 ORDER BY `date`
         ";

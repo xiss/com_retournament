@@ -20,10 +20,10 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
 		</td>
 		<td>
-			<?php echo viewHelper::prepareInfHits($this->escape($row->inf_hits)); ?>
+			<?php echo viewHelper::prepareHits($this->escape($row->inf_hits)); ?>
 		</td>
 		<td>
-			<?php echo viewHelper::prepareMissHits($this->escape($row->miss_hits)); ?>
+			<?php echo viewHelper::prepareHits($this->escape($row->miss_hits)); ?>
 		</td>
 		<td>
 			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $this->escape((int)$row->opponent_id)); ?>">
@@ -32,6 +32,9 @@ defined('_JEXEC') or die('Restricted access');
 		</td>
 		<td>
 			<?php echo $this->escape($row->rating); ?>
+		</td>
+		<td>
+			<?php echo viewHelper::prepareRatingChange($this->escape($row->rating_change)); ?>
 		</td>
 		<td>
 			<?php echo viewHelper::prepareWarnings($this->escape($row->warnings)); ?>

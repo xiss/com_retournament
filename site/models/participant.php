@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-// Загружаем библиотеку joomla.application.component.modelitem
+// Загружаем библиотеку joomla.application.component.modellist
 jimport('joomla.application.component.modellist');
 
 /**
@@ -21,6 +21,7 @@ class ReTournamentModelParticipant extends JModelList
 
 		$db = $this::getDbo();
 		$db->getQuery(true);
+		// TODO Изменить max_rating на основе ифа
 		$query = "
 					SELECT  `nick`,
 					        `surname`,
@@ -81,6 +82,7 @@ class ReTournamentModelParticipant extends JModelList
                     IF(`fighter_id_1` = '$id', inf_hits_1, inf_hits_2) AS inf_hits,
                     IF(`fighter_id_1` = '$id', warnings_1, warnings_2) AS warnings,
                     IF(`fighter_id_1` = '$id', rating_1, rating_2) AS rating,
+                    IF(`fighter_id_1` = '$id', rating_change_1, rating_change_2) AS rating_change,
                     IF(`fighter_id_1` = '$id', inf_hits_2, inf_hits_1) AS miss_hits,
                     IF(`fighter_id_1` = '$id', fighter_id_2, fighter_id_1) AS opponent_id,
 					IF(`fighter_id_1` = '$id',

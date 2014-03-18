@@ -81,29 +81,17 @@ class viewHelper
 	 *
 	 * @return string Значение в теге <span> с необходимым стилем
 	 */
-	static public function prepareInfHits($hits)
+	static public function prepareHits($hits)
 	{
 		$result = "";
-		while ($hits > 0) {
-			$result .= "<span class='oneInfHit'></span>";
-			$hits--;
+		if ($hits == 3) {
+			$style = 'oneHitWin';
 		}
-
-		return $result;
-	}
-
-	/**
-	 * Заменяет числинные значения спрайтами
-	 *
-	 * @param $hits integer Количество хитов
-	 *
-	 * @return string Значение в теге <span> с необходимым стилем
-	 */
-	static public function prepareMissHits($hits)
-	{
-		$result = "";
+		else {
+			$style = 'oneHitLose';
+		}
 		while ($hits > 0) {
-			$result .= "<span class='oneMissHit'></span>";
+			$result .= "<span class='$style'></span>";
 			$hits--;
 		}
 
