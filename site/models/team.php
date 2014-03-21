@@ -61,6 +61,8 @@ class ReTournamentModelTeam extends JModelList
 							`loses`,
 							`miss_hits`,
 							`inf_hits`,
+							warnings,
+							qt_tournaments,
 							jos_rt_participants.state AS state,
 							jos_rt_participants.id AS id,
 							jos_rt_tournaments.name AS tournament_name,
@@ -70,7 +72,7 @@ class ReTournamentModelTeam extends JModelList
 					JOIN `jos_rt_tournaments` ON jos_rt_tournaments.id = jos_rt_participants.tournament_id
 					JOIN `jos_rt_teams` ON jos_rt_teams.id = jos_rt_participants.team_id
 					WHERE jos_rt_participants.team_id = $id
-					ORDER BY `rating` DESC
+					ORDER BY state, `rating` DESC
 					";
 		$db->setQuery($query);
 		$results = $db->loadObjectList();

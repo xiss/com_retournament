@@ -56,7 +56,7 @@ class ReTournamentModelTournaments extends JModelList
                     `type`,
                     (SELECT COUNT(id) FROM jos_rt_fights WHERE tournament_id = jos_rt_tournaments.id) AS qt_fights,
                     -- Количество Участников
-                    (SELECT  COUNT(fighter_id_1)
+                    (SELECT  COUNT(DISTINCT fighter_id_1)
                         FROM(
                             (SELECT DISTINCT fighter_id_1, tournament_id FROM `jos_rt_fights`)
                         UNION

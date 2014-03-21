@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 
 <div
-	class="item-page"<?php //echo $this->pageclass_sfx Почемуто на ноутбуке нормально работает а на стационарном он не видит это свойство ?>>
+	class="item-page">
 	<h2>
 		<!--        TODO Подтягивать заголовок из настроек-->
 		TOURNAMENTS

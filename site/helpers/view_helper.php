@@ -157,11 +157,12 @@ class viewHelper
 	 *
 	 * @return string Название этапа
 	 */
+	// TODO Переделать этот метод
 	static public function prepareStage($stage, $part = '')
 	{
 		$stage = explode('#', $stage);
-		// Если $part казан, то возвращаем модное название этапа
-		if ($part === '') {
+		// Если $part указан, то возвращаем модное название этапа
+		if (!($part === '')) {
 			$result = '';
 			switch ($stage[0]) {
 				case '1/16':
@@ -180,7 +181,7 @@ class viewHelper
 					$result = $stage[1];
 					break;
 				default:
-					$result .= $stage[0] . '#' . $stage[1];
+					$result .= $stage[0] . '#' . isset ($stage[1]);
 			}
 			switch ($part) {
 				case 'winers':

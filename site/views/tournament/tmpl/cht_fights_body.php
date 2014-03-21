@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
 	<tr class='<?php if (($i % 2) == 0):echo "odd";
 	endif;
 	echo viewHelper::prepareCssForFight($row->fight_type);?>'>
-		<td <?php if (!$row->fight_type == "buy"):echo "rowspan = '2'";
+		<td <?php if (!($row->fight_type == "buy")):echo "rowspan = '2'";
 		endif;
 		echo ">";
 		echo viewHelper::prepareStage($this->escape($row->tournament_stage));
@@ -43,7 +43,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_1); ?>
 		</td>
 	</tr>
-	<?php if (!$row->fight_type == "buy"): ?>
+	<?php if (!($row->fight_type == "buy")): ?>
 		<tr class='<?php if (($i % 2) == 0) {
 			echo "odd";
 		}

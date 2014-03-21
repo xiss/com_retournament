@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 
 <?php $a = 1; ?>
 <?php foreach ($this->fights as $i => $row): ?>
-	<!--Заголовки, названия турниров-->
+	<!--Заголовки, названия этапов-->
 	<?php if (!isset($currentStage) or $currentStage <> $row->tournament_stage) :
 		$currentStage = $row->tournament_stage;
 		$a = 1;?>
@@ -14,11 +14,11 @@ defined('_JEXEC') or die('Restricted access');
 			</th>
 		</tr>
 	<?php endif; ?>
-	<!--Бои в турнирах-->
+	<!--Бои-->
 	<tr class='<?php if (($i % 2) == 0):echo "odd";
 	endif;
 	echo viewHelper::prepareCssForFight($row->fight_type);?>'>
-		<td <?php if (!$row->fight_type == "buy"):echo "rowspan = '2'";
+		<td <?php if (!($row->fight_type == "buy")):echo "rowspan = '2'";
 		endif;
 		echo ">$a";
 		?>
@@ -47,7 +47,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_1); ?>
 		</td>
 	</tr>
-	<?php if (!$row->fight_type == "buy"): ?>
+	<?php if (!($row->fight_type == 'buy')): ?>
 		<tr class='<?php if (($i % 2) == 0) {
 			echo "odd";
 		}
