@@ -117,6 +117,37 @@ class viewHelper
 		return $result;
 	}
 
+	/**
+	 * Принимает параметр этапа турнира #__rt_fights.tournament_part и возвращает название этапа
+	 *
+	 * @param $part string
+	 *
+	 * @return string
+	 */
+	static public function preparePart($part)
+	{
+		switch ($part) {
+			case 'losers':
+				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_LOSERS');
+				break;
+			case 'winers':
+				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_WINERS');
+				break;
+			case 'playoff':
+				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_PLAYOFF');
+				break;
+			case 'rating':
+				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_RATING');
+				break;
+			case 'final':
+				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_FINAL');
+				break;
+			default:
+				$result = $part;
+		}
+
+		return $result;
+	}
 
 	/**
 	 * Принимает параметры этапа турнира #__rt_fights.tournament_part и #__rt_fights.tournament_stage и возвращает название этапа
@@ -128,8 +159,9 @@ class viewHelper
 	 */
 	static public function prepareStage($stage, $part = '')
 	{
-		if ($part == 'winers' or $part == 'final' or $part == 'losers') {
-			$stage = explode('#', $stage);
+		$stage = explode('#', $stage);
+		// Если $part казан, то возвращаем модное название этапа
+		if ($part === '') {
 			$result = '';
 			switch ($stage[0]) {
 				case '1/16':
@@ -166,8 +198,9 @@ class viewHelper
 
 			return $result;
 		}
+		// Если не указан возвращаем частичное название
 		else {
-			switch ($stage) {
+			switch ($stage[0]) {
 				case '1':
 					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1');
 					break;
@@ -191,6 +224,21 @@ class viewHelper
 					break;
 				case "place3":
 					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_PLACE_3');
+					break;
+				case '1/16':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/16');
+					break;
+				case '1/8':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/8');
+					break;
+				case '1/4':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/4');
+					break;
+				case '1/2':
+					return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_1/2');
+					break;
+				case 'final':
+					return $stage[1];
 					break;
 			}
 		}

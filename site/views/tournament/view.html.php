@@ -38,7 +38,10 @@ class ReTournamentViewTournament extends JView
 
 			// Подготавливаем документ
 			$this->prepareDocument();
+			// Назначаем layout  из БД
+			$this->setLayout($this->tournament->type);
 			// Отображаем представление.
+
 			parent::display($tpl);
 		}
 		catch (Exception $e) {

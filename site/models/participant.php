@@ -108,73 +108,12 @@ class ReTournamentModelParticipant extends JModelList
 		$results = $db->loadObjectList();
 
 		// Сортируем бои в порядке очередности
-		usort($results, array($this, 'uSortFights'));
+		usort($results, array('modelHelper', 'uSortFights'));
+		echo "<pre>";
+		print_r($results);
+		echo "</pre>";
+
 
 		return $results;
-	}
-
-	/**
-	 * Очередность туров в рейтинговом турнире
-	 *
-	 * @var array
-	 */
-	// TODO Видимо стоит вынести в хелперы
-	protected $stagesRT = array("1", "2", "3", "4", "top8", "top4", "place3", "top2");
-
-	/**
-	 * Очередность туров в турнире чемпионов
-	 *
-	 * @var array
-	 */
-	protected $stagesCHT = array("1/16#1", "1/16#2", "1/16#3", "1/16#4", "1/16#5", "1/16#6", "1/16#7", "1/16#8",
-		"1/8#1", "1/8#2", "1/8#3", "1/8#4", "1/8#5", "1/8#6", "1/8#7", "1/8#8",
-		"1/4#1", "1/4#2", "1/4#3", "1/4#4",
-		"1/2#1", "1/2#2", 'final#1', 'final#2',);
-
-	/**
-	 * Очередность этапов в турнире чемпионов
-	 *
-	 * @var array
-	 */
-	protected $partsCHT = array("winers", "losers", "final");
-
-	/**
-	 * callback функция сортировки массива с боями.
-	 * Сортирует  бои по порядку
-	 *
-	 * @param $a
-	 * @param $b
-	 *
-	 * @return int
-	 */
-	protected function uSortFights($a, $b)
-	{
-		// Сравниваем дату турнира
-		if ($a->tournament_date_ts == $b->tournament_date_ts) {
-			// Определяем тип турнира
-			if ($a->tournament_type == 'rt') {
-				// Сравниваем тур турнира
-				if (array_search($a->tournament_stage, $this->stagesRT) == array_search($b->tournament_stage, $this->stagesRT)) {
-					return 0;
-				};
-
-				return (array_search($a->tournament_stage, $this->stagesRT) > array_search($b->tournament_stage, $this->stagesRT)) ? -1 : 1;
-			}
-			else {
-				// Если это один этап (верхняя нижняя)
-				if ($a->tournament_part == $b->tournament_part) {
-					// Сравниваем тур турнира
-					if (array_search($a->tournament_stage, $this->stagesCHT) == array_search($b->tournament_stage, $this->stagesCHT)) {
-						return 0;
-					};
-
-					return (array_search($a->tournament_stage, $this->stagesCHT) > array_search($b->tournament_stage, $this->stagesCHT)) ? -1 : 1;
-				}
-
-				return (array_search($a->tournament_part, $this->partsCHT) > array_search($b->tournament_part, $this->partsCHT)) ? -1 : 1;
-			}
-		}
-
-		return ($a->tournament_date_ts > $b->tournament_date_ts) ? -1 : 1;
 	}
 }
