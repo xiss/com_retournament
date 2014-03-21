@@ -109,10 +109,6 @@ class ReTournamentModelParticipant extends JModelList
 
 		// Сортируем бои в порядке очередности
 		usort($results, array('modelHelper', 'uSortFights'));
-		echo "<pre>";
-		print_r($results);
-		echo "</pre>";
-
 
 		return $results;
 	}
