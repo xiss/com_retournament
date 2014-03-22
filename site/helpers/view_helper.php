@@ -161,8 +161,8 @@ class viewHelper
 	static public function prepareStage($stage, $part = '')
 	{
 		$stage = explode('#', $stage);
-		// Если $part указан, то возвращаем модное название этапа
-		if (!($part === '')) {
+		// Если $part указан, то возвращаем полное название этапа
+		if ($part == 'winers' or $part == 'final' or $part == 'losers') {
 			$result = '';
 			switch ($stage[0]) {
 				case '1/16':

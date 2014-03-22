@@ -21,7 +21,6 @@ class ReTournamentModelParticipant extends JModelList
 
 		$db = $this::getDbo();
 		$db->getQuery(true);
-		// TODO Изменить max_rating на основе ифа
 		$query = "
 					SELECT  `nick`,
 					        `surname`,
