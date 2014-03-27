@@ -130,8 +130,8 @@ class viewHelper
 			case 'losers':
 				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_LOSERS');
 				break;
-			case 'winers':
-				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_WINERS');
+			case 'winners':
+				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_WINNERS');
 				break;
 			case 'playoff':
 				$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_STAGE_PLAYOFF');
@@ -162,7 +162,7 @@ class viewHelper
 		// TODO Подумать, может стоит в БД для ТЧ записывать этапы как в одну графу, тогда не нужно будет собирать инфу из двух полей.
 		$stage = explode('#', $stage);
 		// Если $part указан и это ТЧ то возвращаем полное название
-		if ($part === 'winers' or $part == 'final' or $part == 'losers') {
+		if ($part === 'winners' or $part == 'final' or $part == 'losers') {
 			$result = '';
 			switch ($stage[0]) {
 				case '1/16':
@@ -184,8 +184,8 @@ class viewHelper
 					$result .= $stage[0] . '#' . isset ($stage[1]);
 			}
 			switch ($part) {
-				case 'winers':
-					$result .= ' ' . JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_WINERS');
+				case 'winners':
+					$result .= ' ' . JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_WINNERS');
 					break;
 				case 'final':
 					$result .= ' ' . JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_ROUND_FINALS');

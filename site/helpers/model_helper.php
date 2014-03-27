@@ -31,7 +31,7 @@ class modelHelper
 	 * @var array
 	 */
 	// TODO ошибка, верно winners, исправить
-	protected static $partsCHT = array("winers", "losers", "final");
+	protected static $partsCHT = array("winners", "losers", "final");
 
 	/**
 	 * callback функция сортировки массива с боями.
