@@ -28,8 +28,7 @@ defined('_JEXEC') or die('Restricted access');
 				<?php echo $this->escape($row->name_1); ?></A>
 		</td>
 		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$row->team_id_1); ?>">
-				<?php echo $this->escape($row->team_name_1); ?></A>
+			<?php echo viewHelper::prepareLinkTeam($row->team_id_1, $this->escape($row->team_name_1)) ?>
 		</td>
 		<td>
 			<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_1)); ?>
@@ -57,8 +56,7 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo $this->escape($row->name_2); ?></A>
 			</td>
 			<td>
-				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$row->team_id_2); ?>">
-					<?php echo $this->escape($row->team_name_2); ?></A>
+				<?php echo viewHelper::prepareLinkTeam($row->team_id_2, $this->escape($row->team_name_2)) ?>
 			</td>
 			<td>
 				<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_2)); ?>

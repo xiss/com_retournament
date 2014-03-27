@@ -16,7 +16,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo viewHelper::prepareDate($this->escape($row->date)); ?>
 		</td>
 		<td>
-			<?php echo $this->escape($row->type); ?>
+			<?php echo viewHelper::prepareTournamentType($this->escape($row->type)); ?>
 		</td>
 		<td>
 			<?php echo $this->escape($row->qt_fights); ?>

@@ -48,13 +48,13 @@ class ReTournamentModelParticipant extends JModelList
 		                    #__rt_participants.name AS participant_name,
 							#__rt_teams.name AS team_name
 					FROM `#__rt_participants`
-					JOIN `#__rt_teams` ON #__rt_teams.id = #__rt_participants.team_id
+					LEFT JOIN `#__rt_teams` ON #__rt_teams.id = #__rt_participants.team_id
 					WHERE #__rt_participants.id = $id
 					";
 		$db->setQuery($query);
 		$results = $db->loadObject();
 
-		//Расчет процентных долей
+		// Расчет процентных долей
 		$results->wins_percentage = round(($results->wins / ($results->wins + $results->draws + $results->loses)) * 100);
 		$results->draws_percentage = round(($results->draws / ($results->wins + $results->draws + $results->loses)) * 100);
 		$results->loses_percentage = round(($results->loses / ($results->wins + $results->draws + $results->loses)) * 100);

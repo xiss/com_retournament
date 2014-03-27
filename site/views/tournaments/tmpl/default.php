@@ -2,11 +2,9 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<div
-	class="item-page">
+<div class="item-page">
 	<h2>
-		<!--        TODO Подтягивать заголовок из настроек-->
-		TOURNAMENTS
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h2>
 	<?php echo $this->loadTemplate('statistics'); ?>
 	<table width="100%" class="reTable">

@@ -35,7 +35,7 @@ class ReTournamentModelLadder extends JModelList
 							#__rt_teams.name AS team_name
 					FROM `#__rt_participants`
 					JOIN `#__rt_tournaments` ON #__rt_tournaments.id = #__rt_participants.tournament_id
-					JOIN `#__rt_teams` ON #__rt_teams.id = #__rt_participants.team_id
+					LEFT JOIN `#__rt_teams` ON #__rt_teams.id = #__rt_participants.team_id
 					WHERE #__rt_participants.state = 'active'
 					ORDER BY `rating` DESC";
 		$db->setQuery($query);

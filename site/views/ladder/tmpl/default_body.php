@@ -12,8 +12,7 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo $this->escape($row->name); ?></A>
 		</td>
 		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$row->team_id); ?>">
-				<?php echo $this->escape($row->team_name); ?></A>
+			<?php echo viewHelper::prepareLinkTeam($row->team_id, $this->escape($row->team_name)); ?>
 		</td>
 		<td><?php echo $this->escape($row->rating); ?></td>
 		<td><?php echo viewHelper::prepareRatingChange($row->rating_change); ?></td>

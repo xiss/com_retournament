@@ -157,12 +157,12 @@ class viewHelper
 	 *
 	 * @return string Название этапа
 	 */
-	// TODO Переделать этот метод
 	static public function prepareStage($stage, $part = '')
 	{
+		// TODO Подумать, может стоит в БД для ТЧ записывать этапы как в одну графу, тогда не нужно будет собирать инфу из двух полей.
 		$stage = explode('#', $stage);
-		// Если $part указан, то возвращаем полное название этапа
-		if ($part == 'winers' or $part == 'final' or $part == 'losers') {
+		// Если $part указан и это ТЧ то возвращаем полное название
+		if ($part === 'winers' or $part == 'final' or $part == 'losers') {
 			$result = '';
 			switch ($stage[0]) {
 				case '1/16':
@@ -259,10 +259,10 @@ class viewHelper
 			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_NOTE_BUY');
 		}
 		if (($fightType . $infHits) == "forfeit3") {
-			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_FORFEIT_WIN');
+			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_NOTE_FORFEIT_WIN');
 		}
 		elseif ($fightType == "forfeit") {
-			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_FORFEIT_LOSE');
+			return JText::_('COM_RETOURNAMENT_HELPER_VIEW_FIGHTS_NOTE_FORFEIT_LOSE');
 		}
 	}
 
@@ -280,6 +280,54 @@ class viewHelper
 		}
 		else {
 			return " semi";
+		}
+	}
+
+
+	/**
+	 * Возвращает HTML ссылку на вид team, если team_id NULL то возвращает значение COM_RETOURNAMENT_HELPER_VIEW_WITHOUT_TEAM
+	 *
+	 * @param $teamId   integer id команды
+	 * @param $teamName string название команды
+	 *
+	 * @return string ссылка либо
+	 */
+	static public function prepareLinkTeam($teamId, $teamName)
+	{
+		$result = '';
+		// Если команды нет
+		if (is_null($teamId)) {
+			$result = JText::_('COM_RETOURNAMENT_HELPER_VIEW_WITHOUT_TEAM');
+		}
+		// Если команды есть получаем ссылку на нее
+		else {
+			$result .= "<A href='";
+			$result .= JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$teamId);
+
+			$result .= "'>" . $teamName . '</A>';
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Возвращает название типа турнира
+	 *
+	 * @param $type string
+	 *
+	 * @return string
+	 */
+	static public function prepareTournamentType($type)
+	{
+		switch ($type) {
+			case 'rt':
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_TOURNAMENT_TYPE_RT');
+				break;
+			case 'cht':
+				return JText::_('COM_RETOURNAMENT_HELPER_VIEW_TOURNAMENT_TYPE_CHT');
+				break;
+			default:
+				return $type;
 		}
 	}
 }

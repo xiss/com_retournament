@@ -3,7 +3,6 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 
 <?php $a = 1; ?>
-<!--TODO Подумать как отображать баи, не везде в ТЧ при бае участник записывается первым-->
 <?php foreach ($this->fights as $i => $row): ?>
 	<!--Заголовки, названия этапа-->
 	<?php if (!isset($currentPart) or $currentPart <> $row->tournament_part) :
@@ -16,34 +15,89 @@ defined('_JEXEC') or die('Restricted access');
 		</tr>
 	<?php endif; ?>
 	<!--Бои-->
-	<tr class='<?php if (($i % 2) == 0):echo "odd";
-	endif;
-	echo viewHelper::prepareCssForFight($row->fight_type);?>'>
-		<td <?php if (!($row->fight_type == "buy")):echo "rowspan = '2'";
-		endif;
-		echo ">";
-		echo viewHelper::prepareStage($this->escape($row->tournament_stage));
+	<!--Если бай-->
+	<?php if ($row->fight_type == 'buy') {
+		// Определяему у какого участника бай fighter_id_1 или fighter_id_2
+		if (!is_null($row->fighter_id_1)) {
+			?>
+			<tr class='<?php if (($i % 2) == 0):echo "odd";
+			endif;
+			echo viewHelper::prepareCssForFight($row->fight_type);?>'>
+				<td>
+					<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
+				</td>
+				<td>
+					<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_1); ?>">
+						<?php echo $this->escape($row->name_1); ?></A>
+				</td>
+				<td>
+					<?php echo viewHelper::prepareLinkTeam($row->team_id_1, $this->escape($row->team_name_1)) ?>
+				</td>
+				<td>
+					<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_1)); ?>
+				</td>
+				<td>
+				</td>
+				<td>
+					<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_1); ?>
+				</td>
+			</tr>
+		<?php
+		}
+		if (!is_null($row->fighter_id_2)) {
+			?>
+			<tr class='<?php if (($i % 2) == 0):echo "odd";
+			endif;
+			echo viewHelper::prepareCssForFight($row->fight_type);?>'>
+				<td>
+					<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
+				</td>
+				<td>
+					<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_2); ?>">
+						<?php echo $this->escape($row->name_2); ?></A>
+				</td>
+				<td>
+					<?php echo viewHelper::prepareLinkTeam($row->team_id_2, $this->escape($row->team_name_2)) ?>
+				</td>
+				<td>
+					<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_2)); ?>
+				</td>
+				<td>
+				</td>
+				<td>
+					<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_2); ?>
+				</td>
+			</tr>
+
+		<?php
+		}
+	}
+	else {
 		?>
-		</td>
-		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_1); ?>">
-				<?php echo $this->escape($row->name_1); ?></A>
-		</td>
-		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$row->team_id_1); ?>">
-				<?php echo $this->escape($row->team_name_1); ?></A>
-		</td>
-		<td>
-			<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_1)); ?>
-		</td>
-		<td>
-			<?php echo viewHelper::prepareWarnings($this->escape($row->warnings_1)); ?>
-		</td>
-		<td>
-			<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_1); ?>
-		</td>
-	</tr>
-	<?php if (!($row->fight_type == "buy")): ?>
+		<!--Если не бай-->
+		<tr class='<?php if (($i % 2) == 0):echo "odd";
+		endif;
+		echo viewHelper::prepareCssForFight($row->fight_type);?>'>
+			<td rowspan='2'>
+				<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
+			</td>
+			<td>
+				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_1); ?>">
+					<?php echo $this->escape($row->name_1); ?></A>
+			</td>
+			<td>
+				<?php echo viewHelper::prepareLinkTeam($row->team_id_1, $this->escape($row->team_name_1)) ?>
+			</td>
+			<td>
+				<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_1)); ?>
+			</td>
+			<td>
+				<?php echo viewHelper::prepareWarnings($this->escape($row->warnings_1)); ?>
+			</td>
+			<td>
+				<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_1); ?>
+			</td>
+		</tr>
 		<tr class='<?php if (($i % 2) == 0) {
 			echo "odd";
 		}
@@ -53,8 +107,7 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo $this->escape($row->name_2); ?></A>
 			</td>
 			<td>
-				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$row->team_id_2); ?>">
-					<?php echo $this->escape($row->team_name_2); ?></A>
+				<?php echo viewHelper::prepareLinkTeam($row->team_id_2, $this->escape($row->team_name_2)) ?>
 			</td>
 			<td>
 				<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_2)); ?>
@@ -66,7 +119,8 @@ defined('_JEXEC') or die('Restricted access');
 				<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_2); ?>
 			</td>
 		</tr>
-	<?php endif;
+	<?php
+	}
 	$a++; ?>
 <?php endforeach; ?>
 

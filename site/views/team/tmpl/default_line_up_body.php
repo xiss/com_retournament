@@ -9,7 +9,14 @@ defined('_JEXEC') or die('Restricted access');
 		$a = 1;?>
 		<tr>
 			<th colspan="9">
-				<?php echo $this->escape($row->state); ?>
+				<?php
+				// TODO Еще подумать над названиями этих двух групп
+				if ($row->state == 'active') {
+					echo JText::_('COM_RETOURNAMENT_TEAM_LINE_UP_HEADING_ACTIVE');
+				}
+				if ($row->state == 'inactive') {
+					echo JText::_('COM_RETOURNAMENT_TEAM_LINE_UP_HEADING_INACTIVE');
+				}?>
 			</th>
 		</tr>
 	<?php endif; ?>

@@ -31,11 +31,12 @@ class ReTournamentViewParticipant extends JView
 	 */
 	public function display($tpl = null)
 	{
-		try {
-			$this->participant = $this->get('Participant');
+		try {$this->participant = $this->get('Participant');
 			$this->fights = $this->get('Fights');
+
 			// Подготавливаем документ
 			$this->prepareDocument();
+
 			// Отображаем представление.
 			parent::display($tpl);
 		}

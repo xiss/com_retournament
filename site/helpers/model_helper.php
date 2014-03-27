@@ -30,6 +30,7 @@ class modelHelper
 	 *
 	 * @var array
 	 */
+	// TODO ошибка, верно winners, исправить
 	protected static $partsCHT = array("winers", "losers", "final");
 
 	/**
