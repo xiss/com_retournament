@@ -23,15 +23,15 @@ class ReTournamentModelTournaments extends JModelList
 		$db->getQuery(true);
 		$query = "
 					SELECT 
-                        (SELECT COUNT(id) FROM #__rt_participants) AS qt_participants,
+                        (SELECT COUNT(id) FROM jos_rt_participants) AS qt_participants,
                         COUNT(id) AS qt_fights,
-                        (SELECT COUNT(id) FROM #__rt_fights WHERE (inf_hits_1 <> 3 AND inf_hits_2 <>3) AND ISNULL(fight_type)) AS qt_draws,
-                        (SELECT SUM(warnings_1 + warnings_2) FROM #__rt_fights) AS qt_warnings,
-                        (SELECT (COUNT(id)-1) FROM #__rt_teams) AS qt_teams,
+                        (SELECT COUNT(id) FROM jos_rt_fights WHERE (inf_hits_1 <> 3 AND inf_hits_2 <>3) AND ISNULL(fight_type)) AS qt_draws,
+                        (SELECT SUM(warnings_1 + warnings_2) FROM jos_rt_fights) AS qt_warnings,
+                        (SELECT (COUNT(id)-1) FROM jos_rt_teams) AS qt_teams,
                         IF(MAX(`rating_1`)>MAX(`rating_2`), MAX(`rating_1`),MAX(`rating_2`)) AS max_rating,
                         IF(MIN(`rating_1`)<MIN(`rating_2`), MIN(`rating_1`),MIN(`rating_2`)) AS min_rating,
-                        (SELECT COUNT(id)FROM #__rt_tournaments WHERE state = 'complete') AS qt_tournaments
-                    FROM `#__rt_fights`
+                        (SELECT COUNT(id)FROM jos_rt_tournaments WHERE state = 'complete') AS qt_tournaments
+                    FROM `jos_rt_fights`
                     WHERE ISNULL(fight_type)";
 		$db->setQuery($query);
 		$results = $db->loadObject();
