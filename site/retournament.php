@@ -3,9 +3,9 @@ defined('_JEXEC') or die('Restricted access');
 
 // Подключаем логирование.
 JLog::addLogger(
-    array('text_file' => 'com_retournament.php'),
-    JLog::ALL,
-    array('com_retournament')
+	array('text_file' => 'com_retournament.php'),
+	JLog::ALL,
+	array('com_retournament')
 );
 JError::$legacy = false;
 

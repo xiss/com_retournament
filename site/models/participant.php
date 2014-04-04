@@ -112,9 +112,9 @@ class ReTournamentModelParticipant extends JModelList
     /**
      * Возвращает изменения рейтинга в связке с боями и параметрами
      *
-     * @return mixed|string JSON
+     * @return list of objects
      */
-    public function getRatingChange()
+    public function getChartDataRating()
     {
         // Получаем id участника для которого ищем бои
         $id = JFactory::getApplication()->input->get('id');
@@ -139,7 +139,9 @@ class ReTournamentModelParticipant extends JModelList
                     JOIN `jos_rt_tournaments` ON jos_rt_tournaments.id = jos_rt_fights.tournament_id
                     LEFT JOIN `jos_rt_participants` AS properties_fighter_1 ON jos_rt_fights.fighter_id_1 = properties_fighter_1.id
                     LEFT JOIN `jos_rt_participants` AS properties_fighter_2 ON jos_rt_fights.fighter_id_2 = properties_fighter_2.id
-                    WHERE (`fighter_id_1` = $id OR `fighter_id_2` = $id) AND IF(`fighter_id_1` = '$id', rating_1 IS NOT NULL, rating_2 IS NOT NULL)
+                    WHERE (`fighter_id_1` = $id OR `fighter_id_2` = $id)
+                      AND IF(`fighter_id_1` = '$id', rating_1 IS NOT NULL, rating_2 IS NOT NULL)
+                      AND fight_type IS NULL
 					";
         $db->setQuery($query);
         $results = $db->loadObjectList();
@@ -148,8 +150,6 @@ class ReTournamentModelParticipant extends JModelList
         usort($results, array('modelHelper', 'uSortFights'));
         // Меняем порядок на обратный
         $results = array_reverse($results);
-        // Преобразуем в JSON
-        $results = json_encode($results);
 
         return $results;
     }

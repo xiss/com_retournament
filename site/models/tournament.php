@@ -96,4 +96,48 @@ class ReTournamentModelTournament extends JModelList
 
 		return $results;
 	}
+
+	/**
+	 * Возвращает количество присутствующих участников на турнире от присутствующих команд
+	 *
+	 * @return mixed|string
+	 *
+	 */
+	public function getChartDataTournamentFilling()
+	{
+		// Получаем id турнира по которой извлекаем информацию
+		$id = JFactory::getApplication()->input->get('id');
+
+		$db = $this::getDbo();
+		// Получаем данные для графика
+		$db->getQuery(true);
+		$query = "
+            SELECT
+                team_id
+                , participants_list
+                , jos_rt_teams.name
+            FROM jos_rt_teams_avg_rating
+                JOIN jos_rt_teams ON jos_rt_teams.id = jos_rt_teams_avg_rating.team_id
+            WHERE tournament_id = $id AND participants_list IS NOT NULL					";
+		$db->setQuery($query);
+		$results = $db->loadObjectList();
+
+		// Массив для сортировки
+		$qtParticipants = array();
+
+		// Подсчитываем количество участников на турнире
+		foreach ($results as $object) {
+			$object->qtParticipants = count(explode(', ', $object->participants_list));
+			$qtParticipants[] = count(explode(', ', $object->participants_list));
+
+			// Удаляем список участников
+			unset ($object->participants_list);
+		}
+		
+		// Сортируем команды по количеству участников на турнире
+		array_multisort($qtParticipants, SORT_DESC, $results);
+
+
+		return $results;
+	}
 }

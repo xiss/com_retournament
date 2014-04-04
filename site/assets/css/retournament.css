@@ -4,6 +4,7 @@
     font-style: normal;
     font-weight: 400;
     color: #2d2d2d;
+    padding-top: 200px;
 }
 
 /*Шапка*/
@@ -116,13 +117,9 @@ ul.reListTwoCol {
 
 ul.reListTwoCol li {
     width: 400px;
-    margin: 7px 0 !important;
-    line-height: 0.55em !important;
+    margin: 7px 0;
+    line-height: 0.55em;
     list-style-position: inside;
     padding-left: 30px;
     float: left;
 }
-
-
-
-
