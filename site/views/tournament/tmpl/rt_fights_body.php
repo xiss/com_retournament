@@ -31,16 +31,16 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo viewHelper::prepareLinkTeam($row->team_id_1, $this->escape($row->team_name_1)) ?>
 		</td>
 		<td>
-			<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_1)); ?>
+			<?php echo viewHelper::prepareHits($row->inf_hits_1); ?>
 		</td>
 		<td>
-			<?php echo $this->escape($row->rating_1); ?>
+			<?php echo $row->rating_1; ?>
 		</td>
 		<td>
-			<?php echo viewHelper::prepareRatingChange($this->escape($row->rating_change_1)); ?>
+			<?php echo viewHelper::prepareRatingChange($row->rating_change_1); ?>
 		</td>
 		<td>
-			<?php echo viewHelper::prepareWarnings($this->escape($row->warnings_1)); ?>
+			<?php echo viewHelper::prepareWarnings($row->warnings_1); ?>
 		</td>
 		<td>
 			<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_1); ?>
@@ -59,16 +59,16 @@ defined('_JEXEC') or die('Restricted access');
 				<?php echo viewHelper::prepareLinkTeam($row->team_id_2, $this->escape($row->team_name_2)) ?>
 			</td>
 			<td>
-				<?php echo viewHelper::prepareHits($this->escape($row->inf_hits_2)); ?>
+				<?php echo viewHelper::prepareHits($row->inf_hits_2); ?>
 			</td>
 			<td>
-				<?php echo $this->escape($row->rating_2); ?>
+				<?php echo $row->rating_2; ?>
 			</td>
 			<td>
-				<?php echo viewHelper::prepareRatingChange($this->escape($row->rating_change_2)); ?>
+				<?php echo viewHelper::prepareRatingChange($row->rating_change_2); ?>
 			</td>
 			<td>
-				<?php echo viewHelper::prepareWarnings($this->escape($row->warnings_2)); ?>
+				<?php echo viewHelper::prepareWarnings($row->warnings_2); ?>
 			</td>
 			<td>
 				<?php echo viewHelper::prepareNote($row->fight_type, $row->inf_hits_2); ?>

@@ -12,19 +12,19 @@ defined('_JEXEC') or die('Restricted access');
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_WINS') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->wins) . " (" . $this->escape($this->participant->wins_percentage) . "%)"; ?>
+		<?php echo $this->participant->wins . " (" . $this->participant->wins_percentage . "%)"; ?>
 	</li>
 	<li>
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_QT_TOURNAMENTS') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->qt_tournaments); ?>
+		<?php echo $this->participant->qt_tournaments; ?>
 	</li>
 	<li>
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_DRAWS') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->draws) . " (" . $this->escape($this->participant->draws_percentage) . "%)"; ?>
+		<?php echo $this->participant->draws . " (" . $this->participant->draws_percentage . "%)"; ?>
 	</li>
 	<li>
 		<strong>
@@ -36,30 +36,30 @@ defined('_JEXEC') or die('Restricted access');
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_LOSES') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->loses) . " (" . $this->escape($this->participant->loses_percentage) . "%)"; ?>
+		<?php echo $this->participant->loses . " (" . $this->participant->loses_percentage . "%)"; ?>
 	</li>
 	<li>
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_MAX_RATING') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->max_rating); ?>
+		<?php echo $this->participant->max_rating; ?>
 	</li>
 	<li>
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_INF_HITS') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->inf_hits) . " (" . $this->escape($this->participant->inf_hits_percentage) . "%)"; ?>
+		<?php echo $this->participant->inf_hits . " (" . $this->participant->inf_hits_percentage . "%)"; ?>
 	</li>
 	<li>
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_WARNINGS') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->warnings); ?>
+		<?php echo $this->participant->warnings; ?>
 	</li>
 	<li>
 		<strong>
 			<?php echo JText::_('COM_RETOURNAMENT_PARTICIPANT_STATISTICS_MISS_HITS') ?>
 		</strong>
-		<?php echo $this->escape($this->participant->miss_hits) . " (" . $this->escape($this->participant->miss_hits_percentage) . "%)"; ?>
+		<?php echo $this->participant->miss_hits . " (" . $this->participant->miss_hits_percentage . "%)"; ?>
 	</li>
 </ul>

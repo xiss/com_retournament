@@ -13,16 +13,16 @@ defined('_JEXEC') or die('Restricted access');
 				<?php echo $this->escape($row->name); ?></A>
 		</td>
 		<td>
-			<?php echo viewHelper::prepareDate($this->escape($row->date)); ?>
+			<?php echo viewHelper::prepareDate($row->date); ?>
 		</td>
 		<td>
 			<?php echo viewHelper::prepareTournamentType($this->escape($row->type)); ?>
 		</td>
 		<td>
-			<?php echo $this->escape($row->qt_fights); ?>
+			<?php echo $row->qt_fights; ?>
 		</td>
 		<td>
-			<?php echo $this->escape($row->qt_participants); ?>
+			<?php echo $row->qt_participants; ?>
 		</td>
 	</tr>
 	<?php $a++; ?>
