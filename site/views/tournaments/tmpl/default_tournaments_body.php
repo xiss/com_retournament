@@ -1,15 +1,17 @@
 <?php
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die('Restricted Access');
 ?>
 
-<?php $a = 1; ?>
 <?php foreach ($this->tournaments as $i => $row): ?>
-	<tr>
+
+	<tr <?php if (($i % 2) == 0) {
+		echo "class='odd'";
+	} ?>>
 		<td>
-			<?php echo $a; ?>
+			<?php echo $i + 1; ?>
 		</td>
 		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . (int)$row->id); ?>">
+			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . $row->id); ?>">
 				<?php echo $this->escape($row->name); ?></A>
 		</td>
 		<td>
@@ -25,7 +27,6 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo $row->qt_participants; ?>
 		</td>
 	</tr>
-	<?php $a++; ?>
 <?php endforeach; ?>
 
 

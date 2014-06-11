@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 <div
 	class="item-page">
 	<h2>
-		<?php echo $this->escape(JText::_('COM_RETOURNAMENT_LADDER_HEADER') . viewHelper::prepareDate($this->ladderHeading->last_tournament_date)); ?>
+		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h2>
 </div>
 
@@ -12,4 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 	<thead><?php echo $this->loadTemplate('head'); ?></thead>
 	<tbody><?php echo $this->loadTemplate('body'); ?></tbody>
 </table>
+
+
+
 

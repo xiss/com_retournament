@@ -27,7 +27,7 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
 				</td>
 				<td>
-					<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_1); ?>">
+					<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $row->fighter_id_1); ?>">
 						<?php echo $this->escape($row->name_1); ?></A>
 				</td>
 				<td>
@@ -53,7 +53,7 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
 				</td>
 				<td>
-					<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_2); ?>">
+					<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $row->fighter_id_2); ?>">
 						<?php echo $this->escape($row->name_2); ?></A>
 				</td>
 				<td>
@@ -82,7 +82,7 @@ defined('_JEXEC') or die('Restricted access');
 				<?php echo viewHelper::prepareStage($this->escape($row->tournament_stage)); ?>
 			</td>
 			<td>
-				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_1); ?>">
+				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $row->fighter_id_1); ?>">
 					<?php echo $this->escape($row->name_1); ?></A>
 			</td>
 			<td>
@@ -103,7 +103,7 @@ defined('_JEXEC') or die('Restricted access');
 		}
 		echo viewHelper::prepareCssForFight($row->fight_type);?>'>
 			<td>
-				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->fighter_id_2); ?>">
+				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $row->fighter_id_2); ?>">
 					<?php echo $this->escape($row->name_2); ?></A>
 			</td>
 			<td>

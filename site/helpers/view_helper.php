@@ -302,7 +302,7 @@ class viewHelper
 		// Если команды есть получаем ссылку на нее
 		else {
 			$result .= "<A href='";
-			$result .= JRoute::_('index.php?option=com_retournament&view=team&id=' . (int)$teamId);
+			$result .= JRoute::_('index.php?option=com_retournament&view=team&id=' . $teamId);
 
 			$result .= "'>" . $teamName . '</A>';
 		}

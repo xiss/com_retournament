@@ -29,7 +29,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo $a; ?>
 		</td>
 		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->id); ?>">
+			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $row->id); ?>">
 				<?php echo $this->escape($row->name); ?></A>
 		</td>
 		<td>
@@ -51,7 +51,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo $row->qt_tournaments; ?>
 		</td>
 		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . (int)$row->tournament_id); ?>">
+			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . $row->tournament_id); ?>">
 				<?php echo viewHelper::prepareDate($row->tournament_date); ?></A>
 		</td>
 	</tr>

@@ -8,7 +8,7 @@ defined('_JEXEC') or die('Restricted access');
 		$curentTournament = $row->tournament_id; ?>
 		<tr>
 			<th colspan="7">
-				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . (int)$row->tournament_id); ?>">
+				<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=tournament&id=' . $row->tournament_id); ?>">
 					<?php echo $this->escape($row->tournament_name . " " . viewHelper::prepareDate($row->tournament_date)); ?>
 				</A>
 			</th>
@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
 			<?php echo viewHelper::prepareHits($row->miss_hits); ?>
 		</td>
 		<td>
-			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . (int)$row->opponent_id); ?>">
+			<A href="<?php echo JRoute::_('index.php?option=com_retournament&view=participant&id=' . $row->opponent_id); ?>">
 				<?php echo $this->escape($row->opponent_name); ?>
 			</A>
 		</td>

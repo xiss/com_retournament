@@ -19,11 +19,13 @@
         <filename>index.html</filename>
         <filename>retournament.php</filename>
         <filename>controller.php</filename>
+        <filename>router.php</filename>
         <folder>views</folder>
         <folder>models</folder>
         <folder>language</folder>
         <folder>assets</folder>
         <folder>helpers</folder>
+        <folder>libs</folder>
     </files>
     <!--<languages folder = "site">-->
     <!--<language tag = "ru-RU">language/ru-RU/ru-RU.com_retournament.sys.ini</language>-->
